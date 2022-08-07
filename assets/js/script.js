@@ -114,7 +114,7 @@ $(".card .list-group").sortable({
   helper: "clone",
   activate: function(event, ui){
     $(this).addClass("dropover");
-    $(".bottom-trash").removeClass("bottom-trash-drag");
+    $(".bottom-trash").addClass("bottom-trash-drag");
     console.log(ui);
   },
   deactivate: function(event, ui){
@@ -133,13 +133,19 @@ $(".card .list-group").sortable({
   update: function(){
     var tempArr = [];
     $(this).children().each(function(){
-      var text = $(this).find("p").text().trim();
+      // var text = $(this).find("p").text().trim();
 
-      var date = $(this).find("span").text().trim();
-
+      // var date = $(this).find("span").text().trim();
       tempArr.push({
-        text: text,
-        date: date
+        text: $(this)
+          .find("p")
+          .text()
+          .trim(),
+        date: $(this)
+          .find("span")
+          .text()
+          .trim()
+      
       });
 
            
